@@ -1,0 +1,10 @@
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\bin\Debug\Winsocket.exe
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\bin\Debug\Winsocket.pdb
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\obj\Debug\WinsocketServer.Properties.Resources.resources
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\obj\Debug\WinsocketServer.csproj.GenerateResource.Cache
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\obj\Debug\Winsocket.exe
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\obj\Debug\Winsocket.pdb
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\bin\Debug\CommonClass.dll
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\bin\Debug\CommonClass.pdb
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\obj\Debug\WinsocketServer.csprojResolveAssemblyReference.cache
+E:\Code_Workspace\C#_code\WinSocketApp\WindowsFormsApplication2\obj\Debug\WinsocketServer.SeverMainFrm.resources
