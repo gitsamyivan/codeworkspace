@@ -3,3 +3,8 @@ E:\Code_Workspace\C#_code\WinSocketApp\TestAPp\bin\Debug\TestAPp.pdb
 E:\Code_Workspace\C#_code\WinSocketApp\TestAPp\obj\Debug\TestAPp.csprojResolveAssemblyReference.cache
 E:\Code_Workspace\C#_code\WinSocketApp\TestAPp\obj\Debug\TestAPp.exe
 E:\Code_Workspace\C#_code\WinSocketApp\TestAPp\obj\Debug\TestAPp.pdb
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\TestAPp\obj\Debug\TestAPp.exe
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\TestAPp\obj\Debug\TestAPp.pdb
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\TestAPp\bin\Debug\TestAPp.exe
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\TestAPp\bin\Debug\TestAPp.pdb
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\TestAPp\obj\Debug\TestAPp.csprojResolveAssemblyReference.cache

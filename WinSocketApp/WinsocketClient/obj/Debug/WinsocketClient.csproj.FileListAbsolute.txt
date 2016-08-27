@@ -8,3 +8,13 @@ E:\Code_Workspace\C#_code\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient
 E:\Code_Workspace\C#_code\WinSocketApp\WinsocketClient\bin\Debug\CommonClass.dll
 E:\Code_Workspace\C#_code\WinSocketApp\WinsocketClient\bin\Debug\CommonClass.pdb
 E:\Code_Workspace\C#_code\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient.ClientMainFrm.resources
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient.exe
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient.pdb
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\bin\Debug\WinsocketClient.exe
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\bin\Debug\WinsocketClient.pdb
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\bin\Debug\CommonClass.dll
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\bin\Debug\CommonClass.pdb
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient.csprojResolveAssemblyReference.cache
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient.ClientMainFrm.resources
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient.Properties.Resources.resources
+E:\Code_Workspace\GitWorkSpace\WinSocketApp\WinsocketClient\obj\Debug\WinsocketClient.csproj.GenerateResource.Cache

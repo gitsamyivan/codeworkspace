@@ -25,6 +25,7 @@ namespace FeiQ
         {  
             string hostname = Dns.GetHostName();//得到本机名   
             IPHostEntry localhost = Dns.GetHostByName(hostname);
+            //IPHostEntry localhost = Dns.GetHostEntry(hostname);
             IPAddress localaddr = localhost.AddressList[0];  
             return localaddr.ToString();  
         }  

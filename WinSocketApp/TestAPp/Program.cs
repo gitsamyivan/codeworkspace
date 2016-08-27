@@ -28,11 +28,26 @@ namespace TestAPp
 
         public static string GetLocalIp()
         {
-            string hostname = Dns.GetHostName();//得到本机名   
-            //IPHostEntry localhost = Dns.GetHostEntry(hostname);
-            IPHostEntry localhost = Dns.GetHostByName(hostname);
-            IPAddress localaddr = localhost.AddressList[0];
-            return localaddr.ToString();
+            try
+            {
+                string hostname = Dns.GetHostName();//得到本机名   
+                IPHostEntry localhost = Dns.GetHostEntry(hostname);
+                //IPHostEntry localhost = Dns.GetHostByName(hostname);
+                //IPAddress localaddr = localhost.AddressList[1];
+                foreach (IPAddress item in localhost.AddressList)
+                {
+                    if (item.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return item.ToString();
+                    }
+                }
+
+                return "127.0.0.1";
+            }
+            catch (Exception)
+            {
+                   return "127.0.0.1";
+            }
         } 
     }
 }
