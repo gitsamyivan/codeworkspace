@@ -30,12 +30,12 @@
         {
             this.pic_header = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_add = new System.Windows.Forms.Button();
             this.btn_change = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.tab_main = new System.Windows.Forms.TabControl();
             this.tabPage_friend = new System.Windows.Forms.TabPage();
-            this.tabPage_setting = new System.Windows.Forms.TabPage();
             this.lstvw_myfirends = new System.Windows.Forms.ListView();
+            this.tabPage_setting = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pic_header)).BeginInit();
             this.panel2.SuspendLayout();
             this.tab_main.SuspendLayout();
@@ -59,6 +59,16 @@
             this.panel2.Size = new System.Drawing.Size(189, 38);
             this.panel2.TabIndex = 2;
             // 
+            // btn_change
+            // 
+            this.btn_change.Location = new System.Drawing.Point(122, 6);
+            this.btn_change.Name = "btn_change";
+            this.btn_change.Size = new System.Drawing.Size(62, 23);
+            this.btn_change.TabIndex = 1;
+            this.btn_change.Text = "刷新好友";
+            this.btn_change.UseVisualStyleBackColor = true;
+            this.btn_change.Click += new System.EventHandler(this.btn_change_Click);
+            // 
             // btn_add
             // 
             this.btn_add.Location = new System.Drawing.Point(3, 6);
@@ -67,15 +77,6 @@
             this.btn_add.TabIndex = 0;
             this.btn_add.Text = "添加远程好友";
             this.btn_add.UseVisualStyleBackColor = true;
-            // 
-            // btn_change
-            // 
-            this.btn_change.Location = new System.Drawing.Point(122, 6);
-            this.btn_change.Name = "btn_change";
-            this.btn_change.Size = new System.Drawing.Size(62, 23);
-            this.btn_change.TabIndex = 1;
-            this.btn_change.Text = "切换账号";
-            this.btn_change.UseVisualStyleBackColor = true;
             // 
             // tab_main
             // 
@@ -98,6 +99,14 @@
             this.tabPage_friend.Text = "我的好友";
             this.tabPage_friend.UseVisualStyleBackColor = true;
             // 
+            // lstvw_myfirends
+            // 
+            this.lstvw_myfirends.Location = new System.Drawing.Point(0, 0);
+            this.lstvw_myfirends.Name = "lstvw_myfirends";
+            this.lstvw_myfirends.Size = new System.Drawing.Size(195, 357);
+            this.lstvw_myfirends.TabIndex = 0;
+            this.lstvw_myfirends.UseCompatibleStateImageBehavior = false;
+            // 
             // tabPage_setting
             // 
             this.tabPage_setting.Location = new System.Drawing.Point(4, 22);
@@ -107,14 +116,6 @@
             this.tabPage_setting.TabIndex = 1;
             this.tabPage_setting.Text = "设置";
             this.tabPage_setting.UseVisualStyleBackColor = true;
-            // 
-            // lstvw_myfirends
-            // 
-            this.lstvw_myfirends.Location = new System.Drawing.Point(0, 0);
-            this.lstvw_myfirends.Name = "lstvw_myfirends";
-            this.lstvw_myfirends.Size = new System.Drawing.Size(195, 357);
-            this.lstvw_myfirends.TabIndex = 0;
-            this.lstvw_myfirends.UseCompatibleStateImageBehavior = false;
             // 
             // MainForm
             // 

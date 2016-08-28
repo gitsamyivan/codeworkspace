@@ -12,3 +12,16 @@ E:\Code_Workspace\C#_code\WinSocketApp\FeiQ\obj\Debug\FeiQ.exe
 E:\Code_Workspace\C#_code\WinSocketApp\FeiQ\obj\Debug\FeiQ.pdb
 E:\Code_Workspace\GitWorkSpace\WinSocketApp\FeiQ\obj\Debug\FeiQ.exe
 E:\Code_Workspace\GitWorkSpace\WinSocketApp\FeiQ\obj\Debug\FeiQ.pdb
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.exe
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.pdb
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\bin\Debug\FeiQ.exe
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\bin\Debug\FeiQ.pdb
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\bin\Debug\CommonClass.dll
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\bin\Debug\CommonClass.pdb
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.csprojResolveAssemblyReference.cache
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.Login.resources
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.MainForm.resources
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.Properties.Resources.resources
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.SendMessage.resources
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\obj\Debug\FeiQ.csproj.GenerateResource.Cache
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\FeiQ\bin\Debug\FeiQ.exe.config

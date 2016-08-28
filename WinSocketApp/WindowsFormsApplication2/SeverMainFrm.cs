@@ -148,9 +148,13 @@ namespace WinsocketServer
                         userdic.Remove(user.UserInfo.Userid);
                         this.Invoke(new Action(() =>
                         {
-                            this.combox_clients.Items.Remove(ipaddress);
-                            if (this.combox_clients.Text == ipaddress)
-                                    this.combox_clients.Text = "";
+                            combox_clients.Items.Clear();
+                            combox_clients.Text = "";
+                            foreach (var item in userdic)
+                            {
+                              AddUserToListBox(item.Value.UserInfo.Nickname, item.Value.UserInfo.Userid);
+                            }
+                          
                         }));
                         break;
                     }
@@ -170,7 +174,7 @@ namespace WinsocketServer
                                 user.UserInfo.Age = u.Age;
                             }
                             string umsg = jss.Serialize(user.UserInfo);
-                            user.UserSocket.Send(MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Login, umsg, null, "0", "0"));
+                            user.UserSocket.Send(MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Login,"0", umsg, null, "0", "0"));
 
                             if (!string.IsNullOrEmpty(user.UserInfo.Nickname) && !string.IsNullOrEmpty(user.UserInfo.Userid))
                                 AddUserToListBox(user.UserInfo.Nickname, user.UserInfo.Userid);
@@ -194,7 +198,7 @@ namespace WinsocketServer
                             }
                             else
                             {
-                                var fail = MessageHeader.WriteMsgWithHeader(MessageHeader.MessageHead.Message,"发送失败",null,"0","0");
+                                var fail = MessageHeader.WriteMsgWithHeader(MessageHeader.MessageHead.Message,"0","发送失败",null,"0","0");
                                 userdic[message.fromId].UserSocket.Send(fail);
                             } 
                       
@@ -268,9 +272,10 @@ namespace WinsocketServer
                 user = user.Split('_')[1];
                 string msg = this.rchbox_sendmsg.Text;
                 //byte[] buffer = Encoding.UTF8.GetBytes(msg);
-                byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Message, msg,null,"0","0");
+                byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Message,"0", msg,null,"0","0");
 
                 //userdic[user].Send(buffer);
+                if (userdic.ContainsKey(user))
                 userdic[user].UserSocket.Send(buffer);
             }
             else
@@ -330,7 +335,7 @@ namespace WinsocketServer
                         }
 
                         //byte[] buffer = Encoding.UTF8.GetBytes(msg);
-                        byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.File, filename, file,"0","0");
+                        byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.File,"0", filename, file,"0","0");
 
                         //userdic[user].Send(buffer);
                         if(userdic.ContainsKey(user))
@@ -375,7 +380,7 @@ namespace WinsocketServer
                 string user = this.combox_clients.Text;
                 user = user.Split('_')[1];
 
-               byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Shaken, "");
+               byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Shaken,"0", "",null,"0","0");
 
                 //userdic[user].Send(buffer);
                if (userdic.ContainsKey(user))

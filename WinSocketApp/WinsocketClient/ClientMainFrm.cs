@@ -26,15 +26,22 @@ namespace WinsocketClient
             InitializeComponent();
         }
 
-        private void SOcketConnect()
+        private void SocketConnect()
         {
-            clientsocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                clientsocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            IPAddress ip = IPAddress.Parse(this.txt_ip.Text);
+                IPAddress ip = IPAddress.Parse(this.txt_ip.Text);
 
-            IPEndPoint ipend = new IPEndPoint(ip, Convert.ToInt32(this.txt_port.Text));
+                IPEndPoint ipend = new IPEndPoint(ip, Convert.ToInt32(this.txt_port.Text));
 
-            clientsocket.Connect(ipend);
+                clientsocket.Connect(ipend);
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void btn_start_Click(object sender, EventArgs e)
         {
@@ -42,7 +49,7 @@ namespace WinsocketClient
             {
                 if (clientsocket == null)
                 {
-                    SOcketConnect();
+                    SocketConnect();
                     this.btn_start.Enabled = false;
                     SetSateMsg(clientsocket.LocalEndPoint.ToString() + "连接成功");
                     Thread th = new Thread(ReciveMsg);
@@ -93,15 +100,15 @@ namespace WinsocketClient
                             if(message.fromId =="0")
                                 SetSateMsg("收到服务器消息: " + message.Msg);
                             else
-                                SetSateMsg(message.fromId+": " + message.Msg);
+                                SetSateMsg(message.fromName+": " + message.Msg);
                         }
                         else if (message.type == (int)CommonClass.MessageHeader.MessageHead.File)
                         {
                             this.Invoke(new Action(() =>
                             {
-                                byte[] filebuffer = Encoding.UTF8.GetBytes(message.Msg);
-                                string filename = Encoding.UTF8.GetString(filebuffer, 0, 30);
-                                SetSateMsg("收到文件 " + filename);
+                                byte[] filebuffer = message.File;
+                                string filename = message.Msg;
+                                SetSateMsg("收到" + message.fromName + "文件 " + filename);
                                 SaveFileDialog save = new SaveFileDialog();
                                 save.FileName = filename;
                                 if (save.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
@@ -109,7 +116,7 @@ namespace WinsocketClient
 
                                     using (FileStream fs = new FileStream(save.FileName, FileMode.Create))
                                     {
-                                        fs.Write(buffer, 30, length - 30);
+                                        fs.Write(filebuffer,0,filebuffer.Length);
                                     }
                                 }
 
@@ -117,7 +124,11 @@ namespace WinsocketClient
 
                         }else if(message.type == (int)CommonClass.MessageHeader.MessageHead.Shaken)
                         {
-
+                          
+                            if (message.fromId == "0")
+                                SetSateMsg("服务器给你发送了一个震动");
+                            else
+                                SetSateMsg(message.fromName + "给你发送了一个震动 ");
                             Shaken();
                         }
 
@@ -185,11 +196,14 @@ namespace WinsocketClient
             }
             catch (Exception ex)
             {
-                
-                this.Invoke(new Action(() =>
-                    {
-                        this.lstbox_sate.Items.Add("接收消息发生错误:  " + ex.Message + "\n\r");
-                    }));
+                this.Invoke(new Action(() => {
+                    this.btn_login.Enabled = true;
+                }));
+                Thread th = new Thread(Reconnect);
+                th.IsBackground = true;
+                th.Start();
+
+                SetSateMsg("接收消息发生错误:  " + ex.Message + "\n\r");
                 //Reset();
             }
 
@@ -221,26 +235,25 @@ namespace WinsocketClient
                     //byte[] buffer = Encoding.UTF8.GetBytes(msg);
                     if (this.txt_firend.Text == "")
                     {
-                        buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Message, msg, null, "0", "0");
+                        buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Message, UserInfo.Nickname, msg, null, "0", "0");
                     }
                     else
                     {
-                        buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Message, msg, null, UserInfo.Userid, this.txt_firend.Text);
+                        buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Message, UserInfo.Nickname, msg, null, UserInfo.Userid, this.txt_firend.Text);
                     }
                    if( clientsocket.Send(buffer) <=0)
                    {
                        clientsocket.Disconnect(true);
-                       SOcketConnect();
+                       SocketConnect();
                    }
                 }
+
+
             }
             catch (Exception ex)
             {
                 
-                  this.Invoke(new Action(() =>
-                    {
-                        this.lstbox_sate.Items.Add("发送消息错误:  " + ex.Message + "\n\r");
-                    }));
+                 SetSateMsg("发送消息错误:  " + ex.Message + "\n\r");
                   Reset();
             }
 
@@ -267,6 +280,31 @@ namespace WinsocketClient
             }));
         }
 
+        private void Reconnect()
+        {
+
+            if (!clientsocket.Connected)
+            {
+                SetSateMsg("服务器已经关闭,正在尝试重新连接");
+                do
+                {
+
+                    SocketConnect();
+                    if (clientsocket.Connected)
+                    {
+                        this.btn_start.Enabled = false;
+                        SetSateMsg(clientsocket.LocalEndPoint.ToString() + "连接成功");
+                        Thread th = new Thread(ReciveMsg);
+                        th.IsBackground = true;
+                        th.Start();
+
+                        SetSateMsg("服务器重新连接");
+                    }
+
+                } while (!clientsocket.Connected);
+            }
+        }
+
         int n = 1;
         void Shaken()
         {
@@ -275,7 +313,7 @@ namespace WinsocketClient
                 this.TopMost = true;
                 for (int i = 0; i < 20; i++)
                 {
-                    this.Location = new Point(this.Location.X - 10 * n, this.Location.Y - 10 * n);
+                    this.Location = new Point(this.Location.X - 3 * n, this.Location.Y - 3 * n);
                     n = n * -1;
                     System.Threading.Thread.Sleep(40);
                 }
@@ -292,15 +330,19 @@ namespace WinsocketClient
         {
             try
             {
-                Users u = new Users()
-                   {
-                       Nickname = this.txt_NickName.Text
-                   };
-                string umsg = jss.Serialize(u);
-                byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Login, umsg, null, "0", "0");
-                clientsocket.Send(buffer);
-                SetSateMsg("登录成功");
-                this.btn_login.Enabled = false;
+                if (clientsocket!= null && clientsocket.Connected)
+                {
+                    Users u = new Users()
+                               {
+                                   Nickname = this.txt_NickName.Text
+                               };
+                    UserInfo.Nickname = this.txt_NickName.Text;
+                    string umsg = jss.Serialize(u);
+                    byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Login, u.Nickname, umsg, null, "0", "0");
+                    clientsocket.Send(buffer);
+                    SetSateMsg("登录成功");
+                    this.btn_login.Enabled = false; 
+                }
             }
             catch (Exception ex)
             {
@@ -312,13 +354,84 @@ namespace WinsocketClient
 
         private void btn_shaken_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(UserInfo.Userid))
+            {
+                this.lstbox_sate.Items.Add("还没有登录");
+                return;
+            }
+
             string toId = this.txt_firend.Text =="" ?"0":this.txt_firend.Text ;
             string fromId = "0";
             if(toId !="0") fromId =UserInfo.Userid;
 
-            var buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Shaken, "", null, fromId, toId);
+            var buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.Shaken, UserInfo.Nickname,"", null, fromId, toId);
+            if(clientsocket != null && clientsocket.Connected)
             clientsocket.Send(buffer);
         }
+
+        private void btnselectfile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.txtfile.Text = open.FileName;
+            }
+        }
+
+        private void btnsendfile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (string.IsNullOrEmpty(UserInfo.Userid))
+                {
+                    this.lstbox_sate.Items.Add("还没有登录");
+                    return;
+                }
+                string friend = this.txt_firend.Text;
+                string filepath = this.txtfile.Text;
+                if (File.Exists(filepath))
+                {
+                    using (FileStream fs = new FileStream(this.txtfile.Text, FileMode.Open))
+                    {
+                        string filename = this.txtfile.Text;
+                        filename = filename.Substring(filename.LastIndexOf(@"\") + 1);
+                        if (filename.Length > 30)
+                        {
+                            MessageBox.Show("文件名过长");
+                            return;
+                        }
+
+                        byte[] file = new byte[fs.Length];
+                        fs.Read(file, 0, file.Length);
+                        if (file.Length > 1024 * 1024 * 10)
+                        {
+                            MessageBox.Show("文件不能超过10M");
+                            return;
+                        }
+
+                        //byte[] buffer = Encoding.UTF8.GetBytes(msg);
+                        byte[] buffer = MessageHeader.WriteMsgWithHeader(CommonClass.MessageHeader.MessageHead.File, UserInfo.Nickname, filename, file, UserInfo.Userid, friend);
+
+                        //userdic[user].Send(buffer);
+                        if (clientsocket != null && clientsocket.Connected)
+                            clientsocket.Send(buffer);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("文件不存在!路径不对..");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("发送文件错误:"+ex.Message);
+            }
+
+        }
+        
 
     }
 }

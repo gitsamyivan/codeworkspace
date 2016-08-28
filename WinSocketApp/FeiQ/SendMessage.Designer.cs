@@ -33,13 +33,13 @@
             this.btn_shaken = new System.Windows.Forms.Button();
             this.rch_recivetxt = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_friendname = new System.Windows.Forms.Label();
-            this.lbl_myname = new System.Windows.Forms.Label();
-            this.pic_firendhead = new System.Windows.Forms.PictureBox();
             this.pic_myhead = new System.Windows.Forms.PictureBox();
+            this.pic_firendhead = new System.Windows.Forms.PictureBox();
+            this.lbl_myname = new System.Windows.Forms.Label();
+            this.lbl_friendname = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_firendhead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myhead)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_firendhead)).BeginInit();
             this.SuspendLayout();
             // 
             // rch_sendtxt
@@ -58,6 +58,7 @@
             this.btn_send.TabIndex = 1;
             this.btn_send.Text = "发送";
             this.btn_send.UseVisualStyleBackColor = true;
+            this.btn_send.Click += new System.EventHandler(this.btn_send_Click);
             // 
             // btn_shaken
             // 
@@ -87,14 +88,21 @@
             this.panel1.Size = new System.Drawing.Size(139, 263);
             this.panel1.TabIndex = 4;
             // 
-            // lbl_friendname
+            // pic_myhead
             // 
-            this.lbl_friendname.AutoSize = true;
-            this.lbl_friendname.Location = new System.Drawing.Point(20, 20);
-            this.lbl_friendname.Name = "lbl_friendname";
-            this.lbl_friendname.Size = new System.Drawing.Size(41, 12);
-            this.lbl_friendname.TabIndex = 0;
-            this.lbl_friendname.Text = "label1";
+            this.pic_myhead.Location = new System.Drawing.Point(23, 177);
+            this.pic_myhead.Name = "pic_myhead";
+            this.pic_myhead.Size = new System.Drawing.Size(85, 71);
+            this.pic_myhead.TabIndex = 3;
+            this.pic_myhead.TabStop = false;
+            // 
+            // pic_firendhead
+            // 
+            this.pic_firendhead.Location = new System.Drawing.Point(22, 35);
+            this.pic_firendhead.Name = "pic_firendhead";
+            this.pic_firendhead.Size = new System.Drawing.Size(87, 68);
+            this.pic_firendhead.TabIndex = 2;
+            this.pic_firendhead.TabStop = false;
             // 
             // lbl_myname
             // 
@@ -105,21 +113,14 @@
             this.lbl_myname.TabIndex = 1;
             this.lbl_myname.Text = "label2";
             // 
-            // pic_firendhead
+            // lbl_friendname
             // 
-            this.pic_firendhead.Location = new System.Drawing.Point(22, 35);
-            this.pic_firendhead.Name = "pic_firendhead";
-            this.pic_firendhead.Size = new System.Drawing.Size(87, 68);
-            this.pic_firendhead.TabIndex = 2;
-            this.pic_firendhead.TabStop = false;
-            // 
-            // pic_myhead
-            // 
-            this.pic_myhead.Location = new System.Drawing.Point(23, 177);
-            this.pic_myhead.Name = "pic_myhead";
-            this.pic_myhead.Size = new System.Drawing.Size(85, 71);
-            this.pic_myhead.TabIndex = 3;
-            this.pic_myhead.TabStop = false;
+            this.lbl_friendname.AutoSize = true;
+            this.lbl_friendname.Location = new System.Drawing.Point(20, 20);
+            this.lbl_friendname.Name = "lbl_friendname";
+            this.lbl_friendname.Size = new System.Drawing.Size(41, 12);
+            this.lbl_friendname.TabIndex = 0;
+            this.lbl_friendname.Text = "label1";
             // 
             // SendMessage
             // 
@@ -133,10 +134,12 @@
             this.Controls.Add(this.rch_sendtxt);
             this.Name = "SendMessage";
             this.Text = "聊天消息";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SendMessage_FormClosed);
+            this.Load += new System.EventHandler(this.SendMessage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_firendhead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_myhead)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_firendhead)).EndInit();
             this.ResumeLayout(false);
 
         }

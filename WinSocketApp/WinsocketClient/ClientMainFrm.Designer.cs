@@ -39,6 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_login = new System.Windows.Forms.Button();
             this.btn_shaken = new System.Windows.Forms.Button();
+            this.btnsendfile = new System.Windows.Forms.Button();
+            this.btnselectfile = new System.Windows.Forms.Button();
+            this.txtfile = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_start
@@ -139,11 +142,41 @@
             this.btn_shaken.UseVisualStyleBackColor = true;
             this.btn_shaken.Click += new System.EventHandler(this.btn_shaken_Click);
             // 
+            // btnsendfile
+            // 
+            this.btnsendfile.Location = new System.Drawing.Point(374, 321);
+            this.btnsendfile.Name = "btnsendfile";
+            this.btnsendfile.Size = new System.Drawing.Size(82, 21);
+            this.btnsendfile.TabIndex = 27;
+            this.btnsendfile.Text = "发送文件";
+            this.btnsendfile.UseVisualStyleBackColor = true;
+            this.btnsendfile.Click += new System.EventHandler(this.btnsendfile_Click);
+            // 
+            // btnselectfile
+            // 
+            this.btnselectfile.Location = new System.Drawing.Point(272, 320);
+            this.btnselectfile.Name = "btnselectfile";
+            this.btnselectfile.Size = new System.Drawing.Size(82, 21);
+            this.btnselectfile.TabIndex = 26;
+            this.btnselectfile.Text = "选择文件";
+            this.btnselectfile.UseVisualStyleBackColor = true;
+            this.btnselectfile.Click += new System.EventHandler(this.btnselectfile_Click);
+            // 
+            // txtfile
+            // 
+            this.txtfile.Location = new System.Drawing.Point(62, 321);
+            this.txtfile.Name = "txtfile";
+            this.txtfile.Size = new System.Drawing.Size(191, 21);
+            this.txtfile.TabIndex = 25;
+            // 
             // ClientMainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 313);
+            this.ClientSize = new System.Drawing.Size(520, 363);
+            this.Controls.Add(this.btnsendfile);
+            this.Controls.Add(this.btnselectfile);
+            this.Controls.Add(this.txtfile);
             this.Controls.Add(this.btn_shaken);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.label1);
@@ -156,7 +189,7 @@
             this.Controls.Add(this.txt_ip);
             this.Controls.Add(this.btn_start);
             this.Name = "ClientMainFrm";
-            this.Text = "MainFrm";
+            this.Text = "ClientMainFrm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFrm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,6 +209,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Button btn_shaken;
+        private System.Windows.Forms.Button btnsendfile;
+        private System.Windows.Forms.Button btnselectfile;
+        private System.Windows.Forms.TextBox txtfile;
     }
 }
 

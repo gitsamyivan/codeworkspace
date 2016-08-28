@@ -158,7 +158,7 @@
             this.Controls.Add(this.txt_ip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SeverMainFrm";
-            this.Text = "MainFrmServer";
+            this.Text = "ServerMainFrm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFrm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

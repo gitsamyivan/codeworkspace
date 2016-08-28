@@ -7,3 +7,8 @@ E:\Code_Workspace\GitWorkSpace\WinSocketApp\CommonClass\bin\Debug\CommonClass.pd
 E:\Code_Workspace\GitWorkSpace\WinSocketApp\CommonClass\obj\Debug\CommonClass.csprojResolveAssemblyReference.cache
 E:\Code_Workspace\GitWorkSpace\WinSocketApp\CommonClass\obj\Debug\CommonClass.dll
 E:\Code_Workspace\GitWorkSpace\WinSocketApp\CommonClass\obj\Debug\CommonClass.pdb
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\CommonClass\bin\Debug\CommonClass.dll
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\CommonClass\bin\Debug\CommonClass.pdb
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\CommonClass\obj\Debug\CommonClass.dll
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\CommonClass\obj\Debug\CommonClass.pdb
+E:\Code_Workspace\GitRepository\mygitspace\WinSocketApp\CommonClass\obj\Debug\CommonClass.csprojResolveAssemblyReference.cache
