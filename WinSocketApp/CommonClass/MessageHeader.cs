@@ -48,7 +48,15 @@ namespace CommonClass
             return buffer;
         }
 
-
+        /// <summary>
+        /// This Home Change
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="FromId"></param>
+        /// <param name="ToId"></param>
+        /// <param name="msgstr"></param>
+        /// <param name="fs"></param>
+        /// <returns></returns>
         public static byte[] FeiQWritePackage(MessageHead type, string FromId,string ToId, string msgstr, byte[] fs = null)
         {
             byte[] buffer;
